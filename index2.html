@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript">
+        // set the pyodide files URL (packages.json, pyodide.asm.data etc)
+        window.languagePluginUrl = '';
+    </script>
+    
+</head>
+<body>
+	<input type="file" accept=".csv" id="input">
+  Pyodide test page <br>
+  Open your browser console to see pyodide output
+  
+  
+  
+  <script src="pyodide.js"></script>
+  <script type="text/javascript">
+        languagePluginLoader.then(function () {
+            console.log(pyodide.runPython('import sys\nsys.version'));
+            console.log(pyodide.runPython('print(1 + 2)'));
+        });
+  </script>
+</body>

@@ -67,18 +67,32 @@
             <li>Наверное, однажды сможете так же работать и с нейронными сетями</li>
             <li>А может и не сможете</li>
           </ul>
+			
 			<form>
 			  <div class="form-group">
-				<label for="exampleFormControlFile1">Input your dataset in .csv here</label>
-				<input type="file" class="form-control-file" accept=".csv" id="exampleFormControlFile1">
+				<label for="csvImport">Input your dataset in .csv here</label>
+				<input type="file" class="form-control-file" accept=".csv" id="inputCSV">
 			  </div>
 			</form>
 			<script type="text/javascript">
+				//тест того, что питон работает
 				languagePluginLoader.then(function () {
 					console.log(pyodide.runPython('import sys\nsys.version'));
-					console.log(pyodide.runPython('print(1 + 2)'));
+					console.log(pyodide.runPython('print(1+2+3)'));
 				});
+				
 			</script>
+			
+			<script>
+				inputCSV.onchange = SelectFile;
+				function SelectFile(){
+					var selectedFile = document.getElementById('inputCSV').files[0]; //получаем файл из формы ввода
+					window.localStorage['dataset'] = selectedFile; //загружаем файл в локальное хранилище браузера, чтобы вытащить его на новой странице
+					document.location.href = 'analyze.html'; //переходим на страницу с анализом
+				}
+				
+			</script>
+			
         </div>
       </div>
     </div>
